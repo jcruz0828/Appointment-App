@@ -1,0 +1,75 @@
+/* styles/navbar.css */
+
+/* Custom Navbar styles */
+.navbar {
+  background-color: #007bff; /* Light background color */
+  padding: 1rem; /* Padding for the navbar */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Align to the top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it stays above other content */
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .navbar-brand {
+  font-weight: bold; /* Make the brand text bold */
+  font-size: 1.5rem; /* Larger font size for the brand */
+  color: white;
+  text-decoration: none;
+}
+.navbar .navbar-brand:hover {
+  font-weight: bold; /* Make the brand text bold */
+  font-size: 1.5rem; /* Larger font size for the brand */
+  color: black;
+}
+
+.navbar .nav-link {
+  color: white; /* Default link color */
+  margin-right: 15px; /* Space between nav links */
+  text-decoration: none;
+}
+
+.navbar .nav-link:hover {
+  color: black; /* Darker color on hover */
+}
+
+.navbar .nav-link.active {
+  font-weight: bold; /* Bold active link */
+  color: #0056b3; /* Active link color */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar .nav-link {
+    margin-right: 10px; /* Reduced margin on smaller screens */
+  }
+}
+
+/* Add margin-top to the app content to avoid overlap with the fixed navbar */
+.App {
+  margin-top: 70px; /* Adjust based on your navbar height */
+}
+#brand{
+  margin-left: 25px;
+}
+#links{
+  margin-right: 50px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+/* styles/navbar.css */
+
+
+.hidden {
+  transform: translateY(-100%); /* Move navbar out of view */
+}
+
+.visible {
+  transform: translateY(0); /* Bring navbar back into view */
+}

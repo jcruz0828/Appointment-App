@@ -14,12 +14,9 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here, e.g., API call
+    
   };
-  const reg = (e)=>{
-    e.preventDefault();
-    // implement pop up to let user know to contact admin
-  }
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,7 +42,7 @@ export const Login = () => {
         />
       </div>
       <button type="submit">Login</button>
-      <a href="/signup" className="reg">Don't have an account?</a>
+      <a href="/register" className="reg">Don't have an account?</a>
     </form>
   );
 };
