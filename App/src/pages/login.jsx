@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/login.css';
+import { isValidEmail,isValidPassword } from '../../utils/helper-functions/vailidateUserInfo';
 
 export const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const[ errorMessage,setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,11 +16,24 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    if(isValidEmail(formData.email) && isValidPassword(formData.password)){
+     console.log(formData)
+     setErrorMessage('');
+      // API CALL
+    }
+    else{
+      if(!isValidEmail(formData.email)){
+        setErrorMessage("Please Enter A Valid Email")
+      }
+      else{
+        setErrorMessage("Incorrect Email or Password")
+      }
+    }
   };
   
 
   return (
+    <div >
     <form onSubmit={handleSubmit}>
       <h3>OrganizeIT Login</h3>
       <div>
@@ -44,5 +59,12 @@ export const Login = () => {
       <button type="submit">Login</button>
       <a href="/register" className="reg">Don't have an account?</a>
     </form>
+    <div>
+      <p className= 'Error'></p>
+    </div>
+     <p className='errorMessage'>
+      {errorMessage}
+     </p>
+    </div>
   );
 };

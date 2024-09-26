@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { isValidPassword,isValidEmail,checkPasswordStrength } from '../../utils/helper-functions/vailidateUserInfo';
 export const Register = () => { 
   const [formData,setFormData] = useState(
     {firstName: "",
@@ -6,7 +7,10 @@ export const Register = () => {
      email:"",
      password:"",
      confirmPassword:"",
-     business:""});
+    }
+    );
+  const [errorMessage,setErrorMessage] = useState("");
+  const [passwordErrorMessage,setPasswordErrorMessage] = useState([]);
 
      const handleChange = (e) => {
       const { name, value } = e.target;
@@ -17,11 +21,29 @@ export const Register = () => {
       }));
     };
     const handleSubmit = (e)=>{
-      e.preventDefault;
-      //api call
+      e.preventDefault();
+      if(!formData.firstName){
+        setErrorMessage("Please enter first name");
+        return
+      }
+      else if(!formData.lastName){
+        setErrorMessage("Please enter last name");
+        return
+      }
+      else if(!isValidEmail(formData.email)){
+        setErrorMessage("Please enter valid email");
+        return
+      }
+      else if(!isValidPassword(formData.password) ||!isValidPassword(formData.confirmPassword) ){
+        return setPasswordErrorMessage(checkPasswordStrength(formData.password,formData.confirmPassword));
+      }
+    // API CALL
+      setErrorMessage("");
+      setPasswordErrorMessage([]);
     }
 
      return(
+   <div>
      <form onSubmit={handleSubmit}>
       <h3>
         organizeIT sign up
@@ -54,6 +76,16 @@ export const Register = () => {
       </div>
       <button type="submit">Sign Up</button>
      </form>
+     <div className='errorMessage'>
+        {errorMessage || (
+          <>
+            {passwordErrorMessage.map((message, index) => (
+              <p className='eMsg'  key={index}>{message}</p>
+            ))}
+          </>
+        )}
+      </div>
+    </div>
      );
 
 

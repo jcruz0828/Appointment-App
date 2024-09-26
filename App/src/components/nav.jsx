@@ -32,7 +32,7 @@ const NavigationBar = () => {
     };
   }, [lastScrollY]); // Dependency array to track last scroll position
 
-  
+
 
   return (
     <Navbar bg="light" data-bs-theme="light" className={`navbar ${visible ? 'visible' : 'hidden'}`}>
