@@ -1,5 +1,5 @@
 /* src/styles/navbar.css */
-.navbar {
+ .navbar {
   background-color: #007bff; /* Light background color */
   padding: 1rem; /* Padding for the navbar */
   position: fixed; /* Fix the navbar at the top */
@@ -50,9 +50,6 @@
 }
 
 /* Add margin-top to the app content to avoid overlap with the fixed navbar */
-.App {
-  margin-top: 70px; /* Adjust based on your navbar height */
-}
 
 #brand {
   margin-left: 25px;

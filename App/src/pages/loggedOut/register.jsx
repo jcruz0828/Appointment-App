@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 import {
   isValidPassword,
   isValidEmail,
@@ -18,14 +19,14 @@ export const Register = () => {
   const [passwordErrorMessage, setPasswordErrorMessage] = useState([]);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange =  (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(""); // Reset error messages
     setPasswordErrorMessage([]);
@@ -47,6 +48,19 @@ export const Register = () => {
       );
     }
     // API CALL
+    try {
+      const response = await axios.post('http://localhost:3000/api/v1/auth/register', {
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          password: formData.password
+      });
+      console.log('Registration successful:', response.data);
+      const token = response.data.token; 
+      localStorage.setItem('token', token);
+    } catch (error) {
+      console.error('There was an error registering!', error);
+    }
+  
   };
 
   return (

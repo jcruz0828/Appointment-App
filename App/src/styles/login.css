@@ -9,16 +9,17 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh; /* Full viewport height */
+  width: 100vw
 }
 
-.App {
+.app {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
-  margin-top: 70px
+
 }
 
 form {
@@ -29,6 +30,8 @@ form {
   width: 100%; /* Full width of its container */
   max-width: 400px; /* Limit max width for larger screens */
   box-sizing: border-box;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 h3 {
@@ -58,7 +61,7 @@ input:focus {
   outline: none;
 }
 
-button {
+form button {
   width: 100%; /* Full width of the form */
   padding: 0.8rem;
   background-color: #007bff;
@@ -68,6 +71,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
 
 button:hover {

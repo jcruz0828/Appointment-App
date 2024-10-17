@@ -1,18 +1,19 @@
 /* Override Bootstrap Navbar Styles */
-.navbar {
+ .navbar {
   background-color: #007bff; /* Custom background color */
   padding: 1rem; /* Padding for the navbar */
   position: fixed; /* Fix the navbar at the top */
-  top: 0; /* Align to the top */
+  top: 0 !important; /* Align to the top */
   width: 100%; /* Full width */
   z-index: 1000; /* Ensure it stays above other content */
   text-decoration: none;
   transition: transform 0.3s ease-in-out; /* Smooth transition */
+  margin-bottom: 30px !important;
 }
 
 .container {
   display: flex;
-  justify-content: space-between; /* Align brand and links */
+  justify-content: space-between !important; /* Align brand and links */
 }
 
 .navbar .navbar-brand {

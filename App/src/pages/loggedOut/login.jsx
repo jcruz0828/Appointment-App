@@ -22,7 +22,6 @@ export const Login = () => {
     if (isValidEmail(formData.email) && isValidPassword(formData.password)) {
       console.log(formData);
       setErrorMessage("");
-      // API CALL
     } else {
       if (!isValidEmail(formData.email)) {
         setErrorMessage("Please Enter A Valid Email");
