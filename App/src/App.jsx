@@ -8,9 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   return (
-    <div className="app" style={{ marginTop: "70px" }}>
-      {" "}
-      <NavBar />
+    <div className="app">
+      <NavBar/>
       <RouterProvider router={router} />
     </div>
   );

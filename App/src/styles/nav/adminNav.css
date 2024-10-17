@@ -1,28 +1,39 @@
 /* src/styles/navbar.css */
- .navbar {
+.app .bg-body-tertiary {
   background-color: #007bff; /* Light background color */
   padding: 1rem; /* Padding for the navbar */
   position: fixed; /* Fix the navbar at the top */
   top: 0; /* Align to the top */
+  left:0;
   width: 100%; /* Full width */
   z-index: 1001; /* Ensure it stays above other content */
   text-decoration: none;
   transition: transform 0.3s ease-in-out; /* Smooth transition */
   display: flex;
   justify-content: space-between;
+  display: inline;
 }
-.container {
+.me-auto{
   display: flex;
   justify-content: space-between;
   background-color: #007bff;
 }
-
+.app .basic-navbar-nav{
+  display: flex;
+  justify-content: space-between;
+}
 .navbar .navbar-brand {
   font-weight: bold; /* Make the brand text bold */
   font-size: 1.5rem; /* Larger font size for the brand */
   color: white;
   text-decoration: none;
 }
+
+.app .Container{
+  display: flex;
+  justify-content: space-betweens;
+}
+
 .navbar .navbar-brand:hover {
   color: black;
 }

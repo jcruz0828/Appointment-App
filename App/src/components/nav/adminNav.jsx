@@ -5,23 +5,33 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
 export function AdminNav() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary"  style={{ backgroundColor: '#007bff' }}>
+    <Navbar expand="lg" className="bg-body-tertiary" >
       <Container>
         <Navbar.Brand href="#home">Organize IT</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             <Nav.Link href="#home">Tasks</Nav.Link>
             <Nav.Link href="#link">Calender</Nav.Link>
             <NavDropdown title="Company" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Employees</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="#">Employees</NavDropdown.Item>
+              <NavDropdown.Item href="#">
                 Company Tasks
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Insights</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="#">Insights</NavDropdown.Item>
+              <NavDropdown.Item href="#a">
                 Settings
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Account" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#">Settings</NavDropdown.Item>
+              <NavDropdown.Item href="#">
+                Customer Support
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#">Insights</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#a">
+                Sign Out
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

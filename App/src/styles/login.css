@@ -22,7 +22,7 @@ body {
 
 }
 
-form {
+.app form {
   background: #ffffff;
   padding: 2rem;
   border-radius: 8px;
@@ -31,7 +31,7 @@ form {
   max-width: 400px; /* Limit max width for larger screens */
   box-sizing: border-box;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 75px !important;
 }
 
 h3 {

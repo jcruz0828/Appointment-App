@@ -3,7 +3,7 @@ import '../../styles/nav/adminNav.css'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
 
-export function UserNav() {
+export function PreAdminNav() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" >
       <Container>
@@ -11,7 +11,7 @@ export function UserNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">Appointments</Nav.Link>
+            <Nav.Link href="#home">Tasks</Nav.Link>
             <Nav.Link href="#link">Calender</Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
               <NavDropdown.Item href="#">Settings</NavDropdown.Item>

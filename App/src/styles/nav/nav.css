@@ -1,14 +1,14 @@
 /* Override Bootstrap Navbar Styles */
- .navbar {
-  background-color: #007bff; /* Custom background color */
+.app .navbar {
+  background-color: #007bff !important; /* Custom background color */
   padding: 1rem; /* Padding for the navbar */
   position: fixed; /* Fix the navbar at the top */
   top: 0 !important; /* Align to the top */
+  left:0;
   width: 100%; /* Full width */
-  z-index: 1000; /* Ensure it stays above other content */
+  z-index: 1000 !important; /* Ensure it stays above other content */
   text-decoration: none;
   transition: transform 0.3s ease-in-out; /* Smooth transition */
-  margin-bottom: 30px !important;
 }
 
 .container {
@@ -49,10 +49,7 @@
   }
 }
 
-/* Add margin-top to the app content to avoid overlap with the fixed navbar */
-.App {
-  margin-top: 70px; /* Adjust based on your navbar height */
-}
+
 
 #brand {
   margin-left: 25px; /* Margin for brand */
