@@ -1,14 +1,16 @@
-// src/components/nav.jsx
-import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import '../styles/nav.css'; 
-import { useState,useEffect } from 'react'; 
+import React from "react";
+import { useState, useEffect } from "react";
+import  {LoggedOutNav} from './nav/loggedOutNav';
+import { AdminNav } from "./nav/adminNav";
+//import "../styles/nav/nav.css"
 
-const NavigationBar = () => {
+export const NavBar = () => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  const handleScroll = () => { 
+  const loggedIn = true;
+  const user = {role:'admin'};
+  const {role} = user;
+  const handleScroll = () => {
     if (window.scrollY === 0) {
       setVisible(true); // Show the navbar
       return;
@@ -24,32 +26,25 @@ const NavigationBar = () => {
 
   useEffect(() => {
     // Attach scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Clean up the event listener on component unmount
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]); // Dependency array to track last scroll position
-
-
-
-  return (
-    <Navbar bg="light" data-bs-theme="light" className={`navbar ${visible ? 'visible' : 'hidden'}`}>
-    <Container>
-      <section id='brand'>
-        <Navbar.Brand href="/home">Organize IT</Navbar.Brand>
-      </section>
-      <section id="links">
-        <Nav className="me-auto">
-          <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link href="/register">Register</Nav.Link>
-          <Nav.Link href="/login">Login</Nav.Link>
-        </Nav>
-      </section>
-    </Container>
-  </Navbar>
-  );
-};
-
-export default NavigationBar;
+  
+  return(
+    <div className="navbar">
+  {!loggedIn ? (
+    <LoggedOutNav />
+  ) : (
+    <>
+      {role === "admin" && <AdminNav />}
+      {role === "pre-admin" && <PreAdminNav />}
+      {role === "user" && <UserNav />}
+    </>
+  )}
+</div>
+  )
+}

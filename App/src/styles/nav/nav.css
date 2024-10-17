@@ -1,8 +1,6 @@
-/* styles/navbar.css */
-
-/* Custom Navbar styles */
+/* Override Bootstrap Navbar Styles */
 .navbar {
-  background-color: #007bff; /* Light background color */
+  background-color: #007bff; /* Custom background color */
   padding: 1rem; /* Padding for the navbar */
   position: fixed; /* Fix the navbar at the top */
   top: 0; /* Align to the top */
@@ -11,21 +9,21 @@
   text-decoration: none;
   transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
-.container{
+
+.container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Align brand and links */
 }
 
 .navbar .navbar-brand {
   font-weight: bold; /* Make the brand text bold */
   font-size: 1.5rem; /* Larger font size for the brand */
-  color: white;
+  color: white; /* Brand color */
   text-decoration: none;
 }
+
 .navbar .navbar-brand:hover {
-  font-weight: bold; /* Make the brand text bold */
-  font-size: 1.5rem; /* Larger font size for the brand */
-  color: black;
+  color: black; /* Change brand color on hover */
 }
 
 .navbar .nav-link {
@@ -54,22 +52,38 @@
 .App {
   margin-top: 70px; /* Adjust based on your navbar height */
 }
-#brand{
-  margin-left: 25px;
+
+#brand {
+  margin-left: 25px; /* Margin for brand */
 }
-#links{
-  margin-right: 50px;
-  margin-top: 5px;
+
+#links {
+  margin-right: 50px; /* Margin for links */
+  margin-top: 5px; /* Top margin */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space between links */
 }
-/* styles/navbar.css */
 
-
+/* Hidden and visible classes for navbar animations */
 .hidden {
   transform: translateY(-100%); /* Move navbar out of view */
 }
 
 .visible {
   transform: translateY(0); /* Bring navbar back into view */
+}
+
+/* Dropdown menu styles */
+.navbar .dropdown-menu {
+  background-color: #007bff; /* Matches navbar background */
+  border: none; /* Remove border */
+}
+
+.navbar .dropdown-item {
+  color: white; /* Dropdown item color */
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  color: black; /* Dropdown item hover color */
 }

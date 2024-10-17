@@ -1,0 +1,91 @@
+/* src/styles/navbar.css */
+.navbar {
+  background-color: #007bff; /* Light background color */
+  padding: 1rem; /* Padding for the navbar */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Align to the top */
+  width: 100%; /* Full width */
+  z-index: 1001; /* Ensure it stays above other content */
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  display: flex;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #007bff;
+}
+
+.navbar .navbar-brand {
+  font-weight: bold; /* Make the brand text bold */
+  font-size: 1.5rem; /* Larger font size for the brand */
+  color: white;
+  text-decoration: none;
+}
+.navbar .navbar-brand:hover {
+  color: black;
+}
+
+.navbar .nav-link {
+  color: white; /* Default link color */
+  margin-right: 15px; /* Space between nav links */
+  text-decoration: none;
+}
+
+.navbar .nav-link:hover {
+  color: black; /* Darker color on hover */
+}
+
+.navbar .nav-link.active {
+  font-weight: bold; /* Bold active link */
+  color: #0056b3; /* Active link color */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar .nav-link {
+    margin-right: 10px; /* Reduced margin on smaller screens */
+  }
+}
+
+/* Add margin-top to the app content to avoid overlap with the fixed navbar */
+.App {
+  margin-top: 70px; /* Adjust based on your navbar height */
+}
+
+#brand {
+  margin-left: 25px;
+}
+
+#links {
+  margin-right: 50px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hidden {
+  transform: translateY(-100%); /* Move navbar out of view */
+}
+
+.visible {
+  transform: translateY(0); /* Bring navbar back into view */
+}
+
+.navbar .dropdown-menu {
+  background-color: #007bff; /* Matches navbar background */
+  border: none;
+}
+
+.navbar .dropdown-item {
+  color: white;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  color: black;
+}
+body .bg-body-tertiary{
+  background-color: #007bff !important; 
+}
