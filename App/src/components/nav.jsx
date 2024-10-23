@@ -2,15 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import  {LoggedOutNav} from './nav/loggedOutNav';
 import { AdminNav } from "./nav/adminNav";
-import { PreAdminNav } from "./nav/PreAdminNav";
+import { PreAdminNav } from "./nav/preAdminNav";
 import { UserNav } from "./nav/userNav";
 
 export const NavBar = ({loggedIn = true}) => {
-  const user = {role:'user'};
+  const user = {role:'admin'};
   const {role} = user;
   
- 
-  
+
   return(
     <div className="navbar">
   {!loggedIn ? (

@@ -5,7 +5,7 @@ import {
   isValidPassword,
   isValidEmail,
   checkPasswordStrength,
-} from "../../helper-functions/vailidateUserInfo";
+} from "../../utils/vailidateUserInfo";
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +17,6 @@ export const Register = () => {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState([]);
-  const navigate = useNavigate();
 
   const handleChange =  (e) => {
     const { name, value } = e.target;

@@ -3,7 +3,7 @@ import "../../styles/login.css";
 import {
   isValidEmail,
   isValidPassword,
-} from "../../helper-functions/vailidateUserInfo";
+} from "../../utils/vailidateUserInfo";
 
 export const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -22,6 +22,7 @@ export const Login = () => {
     if (isValidEmail(formData.email) && isValidPassword(formData.password)) {
       console.log(formData);
       setErrorMessage("");
+      
     } else {
       if (!isValidEmail(formData.email)) {
         setErrorMessage("Please Enter A Valid Email");
