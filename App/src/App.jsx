@@ -10,7 +10,9 @@ export default function App() {
   return (
     <div className="app">
       <NavBar/>
+      <div className="view">
       <RouterProvider router={router} />
+      </div>
     </div>
   );
 }

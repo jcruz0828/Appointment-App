@@ -6,7 +6,7 @@ import { PreAdminNav } from "./nav/preAdminNav";
 import { UserNav } from "./nav/userNav";
 
 export const NavBar = ({loggedIn = true}) => {
-  const user = {role:'admin'};
+  const user = {role:'user'};
   const {role} = user;
   
 
