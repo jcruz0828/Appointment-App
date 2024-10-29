@@ -1,5 +1,3 @@
-Here's a professional README for your project, **Organize IT**:
-
 ---
 
 # Organize IT
