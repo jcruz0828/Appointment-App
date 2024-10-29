@@ -111,7 +111,12 @@ const Calendar = () => {
         headerToolbar={{
           left: "prev,next",
           center: "title",
-          right: "timeGridWeek,dayGridMonth,timeGridDay"
+          right: "timeGridDay,timeGridWeek,dayGridMonth"
+        }}
+        buttonText={{
+          timeGridDay: "Day",
+          timeGridWeek: "Week",
+          dayGridMonth: "Month",
         }}
         events={events}
         dateClick={handleDateClick}
