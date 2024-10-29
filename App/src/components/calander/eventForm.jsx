@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-export const EventForm = ({ show, handleClose, handleSave, selectedEvent, selectedDate}) => {
+export const EventForm = ({ show, handleClose, handleSave, selectedEvent, selectedDate }) => {
+  const [id,setId] = useState('');
   const [title, setTitle] = useState('');
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
@@ -10,23 +11,57 @@ export const EventForm = ({ show, handleClose, handleSave, selectedEvent, select
   const [number, setNumber] = useState('');
   const [email, setEmail] = useState('');
   const [notes, setNotes] = useState('');
-  // Effect to set the form fields when selectedEvent changes
+
+  // Format date to datetime-local format
+  const formatDateTimeLocal = (date) => {
+    if (!date) return '';
+    const localDate = new Date(date);
+    const year = localDate.getFullYear();
+    const month = String(localDate.getMonth() + 1).padStart(2, '0');
+    const day = String(localDate.getDate()).padStart(2, '0');
+    const hours = String(localDate.getHours()).padStart(2, '0');
+    const minutes = String(localDate.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  };
+
+  // Populate form when an event is selected or a new date is clicked
   useEffect(() => {
-    if (selectedEvent) {
-      setTitle(selectedEvent.title);
-      setStart(selectedEvent.start);
-      setEnd(selectedEvent.end);
-      // Assuming your extendedProps contains client info
-      setName(selectedEvent.extendedProps.clientName || '');
-      setNumber(selectedEvent.extendedProps.clientNumber || '');
-      setEmail(selectedEvent.extendedProps.clientEmail || '');
-      setNotes(selectedEvent.extendedProps.notes || '');
+    if (show) { // Populate only if the modal is open
+      if (selectedEvent) {
+        setId(selectedEvent.id);
+        setTitle(selectedEvent.title);
+        setStart(formatDateTimeLocal(selectedEvent.start));
+        setEnd(formatDateTimeLocal(selectedEvent.end));
+        setName(selectedEvent.extendedProps.clientName || '');
+        setNumber(selectedEvent.extendedProps.clientNumber || '');
+        setEmail(selectedEvent.extendedProps.clientEmail || '');
+        setNotes(selectedEvent.extendedProps.notes || '');
+      } else {
+        setTitle('');
+        setStart(formatDateTimeLocal(selectedDate));
+        setEnd('');
+        setName('');
+        setNumber('');
+        setEmail('');
+        setNotes('');
+      }
+    } else {
+      // Clear form fields when modal is closed
+      setTitle('');
+      setStart('');
+      setEnd('');
+      setName('');
+      setNumber('');
+      setEmail('');
+      setNotes('');
     }
-  }, [selectedEvent]);
+  }, [show, selectedEvent, selectedDate]);
 
   const handleSubmit = (e) => {
+    console.log(e)
     e.preventDefault();
     handleSave({
+      id,
       title,
       start,
       end,
@@ -36,12 +71,11 @@ export const EventForm = ({ show, handleClose, handleSave, selectedEvent, select
       notes,
     });
     handleClose();
-    // Reset state if necessary
   };
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header closeButton onClick={handleClose}>
         <Modal.Title>{selectedEvent ? 'Edit Event' : 'Add Event'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -120,3 +154,4 @@ export const EventForm = ({ show, handleClose, handleSave, selectedEvent, select
 };
 
 export default EventForm;
+
