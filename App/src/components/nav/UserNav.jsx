@@ -12,7 +12,7 @@ export function UserNav() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link href="#home">Appointments</Nav.Link>
-            <Nav.Link href="#link">Calender</Nav.Link>
+            <Nav.Link href="/calendar">Calendar</Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
               <NavDropdown.Item href="#">Settings</NavDropdown.Item>
               <NavDropdown.Item href="#">

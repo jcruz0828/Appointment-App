@@ -1,17 +1,15 @@
-// CalendarComponent.jsx
+// ListView.jsx
 import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import bootstrap5Plugin from "@fullcalendar/bootstrap5";
 import interactionPlugin from "@fullcalendar/interaction";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { EventForm } from "../components/calander/eventForm"; // Import the EventForm component
-import "../styles/calendar.css";
+import { EventForm } from "../../../components/calander/eventForm"; // Import the EventForm component
+import "../../../styles/calendar.css";
 
-const Calendar = () => {
+const ListView = () => {
   const [events, setEvents] = useState([
     {
       id: "1",
@@ -31,7 +29,7 @@ const Calendar = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const handleEventClick = (clickInfo) => {
-    setSelectedEvent(clickInfo.event);
+    setSelectedEvent(clickInfo.event); // Set the clicked event for editing
     setShowModal(true);
   };
 
@@ -42,15 +40,13 @@ const Calendar = () => {
 
   const handleSaveEvent = (event) => {
     if (event.id) {
-      // If an event ID exists, update the existing event
       const updatedEvents = events.map((evt) =>
         evt.id === event.id ? { ...evt, ...event } : evt
       );
       setEvents([...updatedEvents]); // Ensure a new array reference
     } else {
-      // If no ID, create a new event
       const newEvent = {
-        id: String(events.length + 1), // Generate a unique ID
+        id: String(events.length + 1),
         title: event.title,
         start:
           event.start instanceof Date ? event.start.toISOString() : event.start,
@@ -67,60 +63,40 @@ const Calendar = () => {
     setShowModal(false); // Close the modal after saving
   };
 
-  const handleEventDragStart = (info) => {
-    const { event } = info;
-    event.setProp("backgroundColor", "orange"); // Change color to indicate dragging
-  };
-
-  const handleEventDragStop = (info) => {
-    const { event } = info;
-    event.setProp("backgroundColor", event.extendedProps.originalColor || ""); // Reset color
-  };
-
-  const handleEventDrop = (info) => {
-    const { event } = info;
-    // Update the events state with the new start and end date
-    setEvents((prevEvents) =>
-      prevEvents.map((evt) =>
-        evt.publicId === event.id
-          ? { ...evt, start: event.startStr, end: event.endStr }
-          : evt
-      )
-    );
-    console.log(info);
-  };
-
   const handleClose = () => {
     setShowModal(false);
     setSelectedEvent(null); // Clear selected event on close
     setSelectedDate(null); // Clear selected date on close
   };
 
+  // Function to open modal for adding a new event
+  const handleAddNewEvent = () => {
+    setSelectedEvent(null);
+    setSelectedDate(null);
+    setShowModal(true);
+  };
+
   return (
     <>
       <FullCalendar
-        plugins={[
-          dayGridPlugin,
-          timeGridPlugin,
-          listPlugin,
-          bootstrap5Plugin,
-          interactionPlugin,
-        ]}
+        plugins={[listPlugin, bootstrap5Plugin, interactionPlugin]}
         themeSystem="bootstrap5"
-        initialView="timeGridWeek"
+        initialView="listWeek" // Set the initial view to list week
         headerToolbar={{
           left: "prev,next",
           center: "title",
-          right: "timeGridWeek,dayGridMonth,timeGridDay,listWeek",
+          right: "listDay,listWeek,listMonth", // List view options
+        }}
+        buttonText={{
+          listDay: "Day",
+          listWeek: "Week",
+          listMonth: "Month",
         }}
         events={events}
         dateClick={handleDateClick}
         eventClick={handleEventClick}
         editable={true}
         selectMirror={true}
-        eventDragStart={handleEventDragStart}
-        eventDragStop={handleEventDragStop}
-        eventDrop={handleEventDrop}
       />
       <EventForm
         show={showModal}
@@ -129,8 +105,28 @@ const Calendar = () => {
         selectedEvent={selectedEvent}
         selectedDate={selectedDate}
       />
+      
+      {/* Floating action button */}
+      <button
+        className="btn btn-primary plus-button"
+        onClick={handleAddNewEvent}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+          fontSize: "24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        +
+      </button>
     </>
   );
 };
 
-export default Calendar;
+export default ListView;

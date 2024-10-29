@@ -5,14 +5,14 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
 export function PreAdminNav() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" >
+    <Navbar expand="lg" className="bg-body-tertiary"  >
       <Container>
-        <Navbar.Brand href="#home" >Organize IT</Navbar.Brand>
+        <Navbar.Brand as={'text'} >Organize IT</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">Tasks</Nav.Link>
-            <Nav.Link href="#link">Calender</Nav.Link>
+            <Nav.Link href="/tasks">Tasks</Nav.Link>
+            <Nav.Link href="/calendar">Calendar</Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
               <NavDropdown.Item href="#">Settings</NavDropdown.Item>
               <NavDropdown.Item href="#">
